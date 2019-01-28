@@ -1,0 +1,36 @@
+﻿@model List<TagViewModel>
+@{
+    ViewData["Title"] = "Lista tagów";
+}
+
+<h2>Lista tagów</h2>
+<span>Lista prezentuje 1000 najpopularniejszych tagów z serwisu StackOverflow</span>
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Popularność</th>
+                <th scope="col">Procentowa popularność</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var tag in Model)
+            {
+                <tr>
+                    <th>@tag.Name</th>
+                    <th>@tag.Count</th>
+                    <th>@tag.Average%</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        Brak wyników
+    </div>
+}
